@@ -16,5 +16,13 @@ jobs:
               uses: google-github-actions/setup-gcloud@v2
               with:
                   project_id: ${{ secrets.GCP_PROJECT_ID }}
-            - name: List VMs
-              run: gcloud compute instances list
+            - name: Executation and genereation of static website
+              uses: appleboy/ssh-action@v0.1.0
+              with:
+                  host: ${{ secrets.GCP_HOST }}
+                  username: ${{ secrets.GCP_USER }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                      cd /var/www/html
+                      wp simple-static generate
+
