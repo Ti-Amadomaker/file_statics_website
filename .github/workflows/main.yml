@@ -19,8 +19,8 @@ jobs:
             - name: Executation and genereation of static website
               uses: appleboy/ssh-action@v0.1.0
               with:
-                  host: ${{ secrets.GCP_HOST }}
-                  username: ${{ secrets.GCP_USER }}
+                  host: 34.41.104.35
+                  username: github
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   script: |
                       cd /var/www/html
